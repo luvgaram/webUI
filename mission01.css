@@ -482,8 +482,17 @@ footer p a{
         padding: 40px 0 0 10px;
     }
     article .contents h3 {
-        width: 270px;
+        width: 140px;
     }
+    
+    article .contents .cont_title h4 {
+        display: none;
+    }
+    
+    article .contents .button {
+        float: left;
+    }
+    
     article .contents .books .hide{
         display: none;
     }
