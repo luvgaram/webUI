@@ -1,0 +1,182 @@
+@charset "utf-8";
+//리셋
+html, body {height:100%;}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, form, fieldset, p, button, header, footer,blockquote,table,th,td,nav {margin:0; padding:0; font-family: "Roboto",Arial,sans-serif;list-style: none;font-family: "Lucida Grande", "Lucida Sans Unicode", Dotum, Helvetica, Arial, Verdana, sans-serif}
+
+#wrap {
+    width: 1440px;
+    margin: 0 auto;
+}
+
+header {
+    width: 100%;
+    height: 600px;
+    background-image: url("images_apple/parenthood_hero.jpg");
+    background-size: 1500px auto;
+    background-position: 50% 50%;
+}
+
+header nav {
+    width: 80%;
+    height: 136px;
+    margin: 0 auto;
+    padding-top: 16px;
+}
+
+header nav ul {
+    width: 980px;
+    height: 36px;
+    margin: 0 auto;
+    border-radius : 4px;
+    background-image: url("images_apple/globalheader.png")
+}
+
+header nav ul li {
+    float: left;
+    width: 106px;
+    height: 100%;
+    border-right: 1px solid #999;
+}
+
+header nav ul li a {
+    background-image: url("images_apple/globalnav_text.png");
+    transition-delay: 0.3s;
+}
+
+header nav ul li:first-child a{
+    background-position: 50% -2%
+}
+
+header nav ul li:nth-child(2) a{
+    background-position: 50% 13%
+}
+
+header nav ul li:nth-child(3) a{
+    background-position: 50% 27%
+}
+
+header nav ul li:nth-child(4) a{
+    background-position: 50% 42%
+}
+
+header nav ul li:nth-child(5) a{
+    background-position: 50% 57%
+}
+
+header nav ul li:nth-child(6) a{
+    background-position: 50% 72%
+}
+
+header nav ul li:nth-child(7) a{
+    background-position: 50% 87%
+}
+
+header nav ul li:nth-child(8) a{
+    background-position: 50% 102%
+}
+
+header nav ul li:last-child {
+    width: 120px;
+    margin: 6px 0 0 4px;
+    border: none;
+    background-image: none;
+}
+
+header nav ul li a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    color: rgba(255, 255, 255, 0.0);   
+}
+
+header nav ul li a:hover {
+    background-color: rgba(0,0,0,0.4);
+}
+
+header nav ul li input {
+    width: 80px;
+    height: 18px;
+    margin-left: 8px;
+    padding-left: 20px;
+    border: none;
+    border-radius: 10px;
+    background-image: url("images_apple/globalsearch_field.png");
+}
+
+header h1 img{
+    margin: 0 16%;
+}
+
+header h2{
+    width: 400px;
+    margin: 0 auto;
+    background-image: url("images_apple/parenthood_cta.png");
+    background-position: 50% 0%;
+}
+
+header h2:hover {
+    background-position: 50% 100%;
+}
+
+header h2 p {
+    opacity: 0;
+}
+
+article {
+    width: 100%;
+    margin-top: 2px;
+}
+
+article ul li {
+    float: left;
+    width: 25%;
+}
+
+article ul li img {
+    width: 358px;
+}
+
+footer {
+    width: 980px;
+    margin: 0 auto;
+}
+
+footer div {
+    width: 410px;
+    height: 12px;
+    padding: 12px 0;
+    color: #6e6e6e;
+    font-size: 0.6em; line-height: 1.2; 
+    float: left;
+}
+
+footer > div:nth-child(2), footer > div:nth-child(4) {
+    margin-left: 160px;
+}
+
+footer > div:nth-child(3) {
+    clear:both;
+}
+
+footer div a {
+    color: #08c;
+    text-decoration: none;
+}
+
+footer div a:hover {
+    text-decoration: underline;
+}
+
+footer p, footer ul {
+    float: left;
+}
+
+footer li {
+    float: left;
+    padding: 0 6px;
+    border-right: 1px solid #ccc;
+}
+
+footer li:last-child {
+    border: none;
+}
