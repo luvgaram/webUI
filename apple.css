@@ -40,7 +40,7 @@ header nav ul li {
 
 header nav ul li a {
     background-image: url("images_apple/globalnav_text.png");
-    transition-delay: 0.3s;
+    transition-delay: 0.2s;
 }
 
 header nav ul li:first-child a{
@@ -144,10 +144,14 @@ footer {
 footer div {
     width: 410px;
     height: 12px;
-    padding: 12px 0;
+    padding: 24px 0 0 0;
     color: #6e6e6e;
     font-size: 0.6em; line-height: 1.2; 
     float: left;
+}
+
+footer > div:nth-child(3), footer > div:nth-child(4) {
+    padding-top: 16px;
 }
 
 footer > div:nth-child(2), footer > div:nth-child(4) {
