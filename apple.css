@@ -1,7 +1,7 @@
 @charset "utf-8";
 //리셋
 html, body {height:100%;}
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, form, fieldset, p, button, header, footer,blockquote,table,th,td,nav {margin:0; padding:0; font-family: "Roboto",Arial,sans-serif;list-style: none;font-family: "Lucida Grande", "Lucida Sans Unicode", Dotum, Helvetica, Arial, Verdana, sans-serif}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, form, fieldset, p, button, header, footer,blockquote,table,th,td,nav {margin:0; padding:0 ;list-style: none;font-family: "Lucida Grande", "Lucida Sans Unicode", Dotum, Helvetica, Arial, Verdana, sans-serif}
 
 #wrap {
     width: 1440px;
