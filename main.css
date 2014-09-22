@@ -1,0 +1,816 @@
+@charset "utf-8";
+//리셋
+html{height:100%;}
+body {
+    background-color:  #e5e5e5;
+    height: 100%;}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, form, fieldset, p, button, header, footer,blockquote,table,th,td,nav {margin:0; padding:0; font-family: "Roboto",Arial,sans-serif;}
+
+a {  
+    text-decoration: none; 
+    color : #404040;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+    
+#wrap {
+    width: 100%; 
+    max-width: 1200px;
+}
+
+header {
+    position: fixed;
+    background-color: #f1f1f1;
+    width: 100%;  
+    height: 72px;
+    padding: 14px 20px 20px 0px;
+    z-index: 100;
+}
+
+header #m_menu {
+    display: none;
+}
+
+header #logo {
+    float: left;
+    padding-left: 30px;
+}
+header #logo img {
+    width: 180px;
+}
+
+header .search{
+    float: left;
+    width: 50%;
+}
+
+header .search form {
+    float: left;
+    width: 83%;
+    margin-left: 22px;
+}
+
+header .search form input {
+    width: 100%;
+    height: 26px;
+    border-style: 1px solid #cccccc;
+    font-size: 16px;
+    color: #a9a9a9;
+}
+
+header .search .button {
+    float: left;
+    margin-left: -4px;
+    width: 12%; 
+}
+header .search .button input{
+    background-color: #4684ee;
+    width: 60px;
+    height: 32px;
+    border: none;
+    
+    border-radius: 0 4px 4px 0;
+    background-image: url(images/search.png);
+    background-position: center;
+}
+
+header .login{
+    float: right;
+    width: 28%;
+    margin-right: 2%;
+}
+
+header .login p{
+    float: right;
+    margin: 9px 10px;
+    font-size: 0.8em;
+}
+
+header .login .menu a{
+    float: right;
+    margin: 8px 10px;
+    width: 16px;
+    height: 16px;
+    background-image: url(images/menu_off.png);
+}
+
+header .login .menu a:hover{
+    background-image: url(images/menu_on.png);
+}
+
+header .login .noti a{
+    float: right;
+    margin: 6px 10px;
+    width: 19px;
+    height: 20px;
+    background-image: url(images/notification_off.png);
+}
+
+header .login .noti a:hover{
+    background-image: url(images/notification_on.png);
+}
+
+header .login .share a{
+    float: right;
+    margin: 0px 2px;
+    width: 56px;
+    height: 22px;
+    background-color: #e6e6e6;
+    font-size: 0.8em;
+    text-align: center;
+    padding-top: 8px;
+    cursor: default;
+}
+
+header .login .share a:hover{
+    text-decoration: none;
+    background-color: #dddddd;
+}
+
+header .login .photo{
+    float: right;
+    margin: 0px 10px;
+    width: 32px;
+    height: 32px;
+    border-radius: 20px;
+    background-image: url(images/photo.jpg);
+}
+
+#appMenu {
+    width: 240px;
+    height: 240px;
+    position: absolute;
+    top: 56px;
+    right: 120px;
+    background-color: #fff;
+    box-shadow: 1px 1px 2px #ccc;
+}
+
+.appMenuItem {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	cursor: move;
+}
+
+#appMenu>div>div {
+    width: 60px;
+    height: 60px;
+    margin: 10px auto;
+}
+
+#appMenu p {
+    width: 60px;
+	margin: 54px 0 0 0;
+    text-align: center;
+}
+
+#accountApp{
+    background: url(images/v1_2e543709.png) no-repeat -4px -1506px;
+}
+
+#searchApp{
+    background: url(images/v1_2e543709.png) no-repeat -2px -768px;
+}
+
+#driveApp{
+    background: url(images/v1_2e543709.png) no-repeat -3px -6px;
+}
+
+#youtubeApp{
+    background: url(images/v1_2e543709.png) no-repeat -4px -1230px;
+}
+
+#mapApp{
+    background: url(images/v1_2e543709.png) no-repeat -36px -253px;
+}
+
+#playApp{
+    background: url(images/v1_2e543709.png) no-repeat -4px -641px;
+}
+
+#newsApp{
+    background: url(images/v1_2e543709.png) no-repeat -4px -1164px;
+}
+
+#gmailApp{
+    background: url(images/v1_2e543709.png) no-repeat -2px -840px;
+}
+
+#calApp{
+    background: url(images/v1_2e543709.png) no-repeat -4px -1094px;
+}
+
+header nav {
+    clear: both;
+    width: 100%;
+    height: 50px;
+    background-color: #ffffff;
+}
+
+header nav h2 {
+    float: left;
+    width: 180px;
+    height: 22px;
+    background-color: #1aa1e1;
+    padding: 14px 10px; 
+}
+
+header nav h2 img {
+    float: left;
+    padding: 0px 20px;
+}
+
+header nav h2 a p {
+    float: left;
+    font-size: 0.8em;
+    font-style: normal;
+    color: #ffffff;
+}
+
+#genre {
+    position: relative;
+    float: left;
+    width: 90px;
+    height: 50px;
+    margin-right:4px;
+}
+
+#genre a img {
+    float: left;
+    padding-top: 18px;
+}
+
+#genre:hover {
+    background-color: #f1f1f1;
+}
+
+#genre a p {
+    float: left;
+    padding: 16px 8px 14px 20px;;
+    font-size: 0.94em;
+}
+
+#genre_menu {
+    margin: 50px 0 0 20px;
+    width: 200px;
+    height: 360px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 4px 4px 20px #666;
+}
+
+#genre_menu li {
+    padding: 10px;
+    list-style: none;
+}
+
+header nav>ul {
+    float: left;
+    width: 340px;
+}
+
+header nav>ul .line {
+    float: left;
+    width: 4px;
+    height: 38px;
+    margin-top: 6px;
+    border-left: 1px solid #d6d6d6;
+}
+
+header nav>ul li {
+    float: left;
+    padding: 16px;
+    font-size: 0.94em;
+    list-style: none;
+}
+
+header nav>ul li:hover {
+    background-color: #f1f1f1;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+header nav>ul .line2 {
+    border-bottom: 2px solid #1aa1e1;
+}
+
+header nav .navLeft {
+    float: right;
+    margin: 10px 40px;
+}
+
+header nav .navLeft img {
+    margin-left: 12px;
+    padding: 4px 18px;
+    border: 1px solid #cccccc;
+}
+
+header nav .navLeft img:hover {
+    padding: 3px 17px;
+    border: 2px solid #cccccc;
+}
+
+aside {
+    position: fixed;
+    top: 105px;
+    width: 200px;
+    height: 190px;
+    box-shadow: 2px 2px #d7d7d7;
+}
+
+aside .left {
+    float: left;
+    width: 24px;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+aside .left img{
+    margin: 80px 8px;
+}
+
+aside .right {
+    float : left;
+    width: 176px;
+    height: 184px;
+    background-color: #f3f3f3;
+    padding-top: 6px;
+}
+
+aside li {  
+    width: 176px;
+    height: 36px;
+    background-color: #f3f3f3;
+    list-style: none;
+    
+}
+
+aside li a {
+    width: 100%;
+    height: 100%;
+    font-size: 1.2em;
+}
+
+aside li a:hover{
+    text-decoration: none;
+}
+
+aside li a p{
+    padding: 8px 0 8px 20px;
+}
+
+aside li a p:hover{
+    background-color: #e6e6e6;
+    cursor: pointer;
+}
+
+article {
+    padding : 140px 0 0 260px
+}
+
+article .contents {
+    width: 100%;
+}
+
+article .contents .cont_title {
+    float: left;
+}
+
+article .contents .cont_title h3 {
+    width: 790px;
+    font-size: 28px;
+    font-weight: normal;
+}
+
+article .contents .cont_title h4 {
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+article .contents .button {
+    float: left;
+    margin: 10px auto;
+    background-color: #1bb5ff
+}
+
+article .contents .button input {
+    width: 60px;
+    height: 32px;
+    background-color: #1aa1e1;
+    border: none;
+    color : #ffffff;
+}
+
+article .contents .button input:hover {
+    width: 60px;
+    height: 30px;
+    background-color: #1bb5ff;
+    margin-top: 2px;
+    border-bottom: 2px solid #666666;
+    color : #ffffff;
+}
+
+article .contents .books {
+    clear: both;
+    width: 860px;
+    height:676px;
+    margin-bottom: 40px;
+}
+
+.books_left, .books_right {
+    width: 860px;
+    height: 676px;
+    position: absolute;
+    display: none;
+}
+
+article .contents .books .book {
+    float: left;
+    width: 160px; 
+    height: 330px;
+    margin: 0 12px 8px 0;
+    background-color: #ffffff;
+    box-shadow: 2px 2px #d8d8d8;
+    list-style: none;
+    border-radius: 6px;
+}
+
+article .contents .books .book .bookImage {
+    width: 100%;
+    height: 240px;
+    background-color: #f5f5f5;
+    position: relative;
+    border-radius: 6px;
+}
+
+.bookLink a{
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.bookLink a:hover {
+    background-color: rgba(0,0,0,0.4);
+}
+
+article .contents .books .book .bookImage img {
+    width: 100%;   
+    height: 240px;
+}
+
+article .contents .books .book .title {
+    height: 22px;  
+    padding: 4px 0 0 8px;
+}
+
+article .contents .books .book .author a{
+    position: relative;
+    z-index: 1;
+    height: 20px;   
+    padding-left: 8px;
+    font-size: 0.8em;
+    color: #aaaaaa;
+}
+
+article .contents .books .book .price a{
+    float: right;
+    position: relative;
+    top: 20px;
+    right: 10px;
+    width: 60px;
+    height: 20px;
+    text-align: right;
+    font-family: ;
+    font-size: 0.8em;
+    color: #1aa1e1;
+}
+
+article .contents .books .book .detail {
+    padding-left: 8px;
+    font-size: 0.8em;
+    font-style: italic;
+    color: #aaaaaa;
+}
+
+footer {
+    padding:0 60px 0 260px;
+    font-size: 0.8em;
+    color: #777;
+}
+
+footer p {
+    margin-top: 10px;
+}
+
+footer p a{
+    color: #777;
+}
+
+#m_nav {
+    display: none;
+}   
+
+#m_menu{
+    display: none;
+}
+
+#blur {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left; 0;
+    z-index: 1000;
+    background-color: rgba(180,180,180,0.75);
+    display: none;
+}
+
+#blur>img {
+    margin: 50%;
+}
+
+/* resposive web design area */
+@media screen and (max-width:1280px){
+    #wrap {width: 100%;}
+}
+
+@media screen and (max-width:1200px){
+    #wrap {width: 1200px;}
+    header {width: 1200px;}
+    
+    header .search{
+    float: left;
+    width:500px
+    }
+
+    header .search form {
+        float: left;
+        width: 420px;
+        margin-left: 22px;
+    }
+    
+    header .login{
+        float: left;
+        margin-left: 70px;
+    }
+    header nav .navLeft {
+        float: left;
+        margin: 10px 40px 0 320px;
+    }
+}
+
+@media screen and (max-width: 768px){
+    body {overflow-x: hidden;}
+	::-webkit-scrollbar { 
+    display: none; 
+    }
+    #wrap {
+        width: 100%;
+    }
+    header {
+        width: 100%;
+        background-color: #fff;
+        height: 24px;
+        border-top: 2px solid #ccc;
+        border-bottom: 2px solid #ccc;
+        position: static;
+    }
+    header #m_menu {
+        display: block;
+        float: left;
+        margin: 8px 20px;
+    }
+    header #logo {
+        float: left;
+        margin: 0 10% 0 20%;
+        padding-left: 36px;
+    }
+    header .search {
+        float: right;
+        width: 20px;
+    }
+    header .search form {
+        display: none;
+    }
+    header .search .button input {
+        width: 20px;
+        height: 18px;
+        margin: 8px 10px 0 50px;
+        float: right;
+        background-color: #fff;
+        background-image: url(images/m_02.png);
+    }
+    header .login{
+        display: none;
+    }
+    header nav {
+        display: none;
+    }
+	
+    aside {
+        display: none;
+    }
+    article {
+        padding: 20px 0 0 10px;
+    }
+    article #m_menu {
+        display: block;
+        width: 100%;
+        height: 72px;
+    }
+    article #m_menu button {
+        float: left;
+        width: 160px;
+        height: 32px;
+        background-color: #fff;
+        margin-left: 8%;
+        color: #888;
+    }
+	article .contents .cont_title h3 {
+		width: 100%;
+        height: 40px;
+        padding-top:10px;
+        border: none;
+	}
+    article .contents h3 span {
+        display: none;
+    }
+    article .contents .button {
+        position: absolute;
+        left: 626px;
+    }
+    article .contents .cont_title h4 {
+        display: none;
+    }
+    article .contents .button {
+        float: left;
+    }
+    article .contents .books {
+        width: 100%;
+    }
+    .books_left, .books_right {
+        width: 690px;
+        height: 676px;
+    }
+    .book:nth-child(10),  .book:nth-child(9){
+        display: none;
+    }
+    article .contents .books .book .detail {
+        display: none;
+    }
+    footer{
+        width: 90%;
+        height: 200px;
+        margin: 0 auto;
+        padding: 0;
+    }
+    #m_nav{
+        display: block;
+        padding-left: 24%;
+        width: 100%;
+        height: 50px;
+        position: fixed;
+        bottom: 0px;
+        background-color: rgba(255,255,255,0.9);
+    }
+    #m_nav img{
+        margin : 6px 20px;
+    }
+}
+
+
+@media screen and (max-width:714px){
+    article {
+        width: 520px;
+        margin: 0 auto;
+    }
+    article #m_menu button:first-child, #m_menu button:nth-child(2) {
+        margin: 0 12px 12px 0;
+    }
+    article #m_menu button:last-child {
+        margin: 0px;
+    }
+    article .contents .cont_title{
+        width: 86%;
+        float: left;
+    }
+    article .contents h3 {
+        display: inline-block;
+        float: left;
+    }
+    article .contents .button {
+        position: static;
+        float: left;
+    }
+    .books_left, .books_right{
+        width: 520px;
+    }
+    .book:nth-child(8),  .book:nth-child(7) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 532px) {
+    #wrap {
+        width: 100%;
+        margin: 0;
+    }
+	header {
+		width: 100%;
+		margin: 0;
+		padding: 20px 0;
+	}
+    header #m_menu {
+        margin: 8px 4%;
+    }
+    header #logo {
+        clear: both;
+        position: absolute;
+        padding-left: 0;
+        margin: 0 25%;
+    } 
+    article {
+		width: 99%;
+		max-width: 320px;
+        margin: 0 auto;
+        padding-left: 1%;
+    }
+    article #m_menu {
+        width: 100%;
+        height: 100px;
+    }
+    article #m_menu button {
+        width: 150px;
+    }
+    article #m_menu button:nth-child(2) {
+        margin-right: 0px;
+    }
+    article .contents .cont_title{
+        width: 250px;
+        float: left;
+    }
+
+    header .search .button input { 
+        clear: both;
+        position: absolute;
+        margin: 10px 0px;
+        right: 10px;
+    }
+	article {
+		width: 100%;
+		margin: 0;
+	}
+    article .contents .books .book{
+        width: 154px;
+        height: 328px;
+        margin: 2px;
+    }
+    .books_left, .books_right{
+        width: 320px;
+    }
+
+    .book:nth-child(6), .book:nth-child(5){
+        display: none; 
+    }
+    #m_nav{
+        padding-left: 11%;
+    }
+}
+
+/*
+@media screen and (max-width: 360px) {
+    #wrap {
+        margin: 0;
+    }
+    header #logo {
+        padding-left: 0px; 
+    }     
+    article {
+        margin: 0px;
+    }
+    .books_left, .books_right{
+        width: 320px;
+    }
+    #m_nav img{
+        margin : 6px 12px;
+    }
+*/
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,343 @@
+<html>
+	<head>
+	</head>
+
+	<body>
+		<div id = "appMenu" style="position:relative;width:240px;height:240px;left:20px;top:20px;border:solid black 1px;">
+			<div class="draggableDiv" style="position:absolute;left:0px;top:0px;">
+ 				<img src="images/01.jpg" width="60" height="60" />
+				<p style="padding:0;margin:0;">dfaf</p>
+			</div>
+			<div class="draggableDiv" style="position:absolute;left:80px;top:0px;">
+ 				<img src="images/02.jpg" width="60" height="60" />
+				<p style="padding:0;margin:0;">ㄴㅀㄴ</p>
+			</div>
+			<div class="draggableDiv" style="position:absolute;left:160px;top:0px;">
+ 				<img src="images/03.jpg" width="60" height="60" />
+				<p style="padding:0;margin:0;">dfaf</p>
+			</div>
+			<div class="draggableDiv" style="position:absolute;left:0px;top:80px;">
+ 				<img src="images/04.jpg" width="60" height="60" />
+				<p style="padding:0;margin:0;">ㄴㅀㄴ</p>
+			</div>
+			<div class="draggableDiv" style="position:absolute;left:80px;top:80px;">
+ 				<img src="images/05.jpg" width="60" height="60" />
+				<p style="padding:0;margin:0;">dfaf</p>
+			</div>
+			<div class="draggableDiv" style="position:absolute;left:160px;top:80px;">
+ 				<img src="images/06.jpg" width="60" height="60" />
+				<p style="padding:0;margin:0;">ㄴㅀㄴ</p>
+			</div>
+		</div>
+		
+		<script>
+			window.addEventListener('load', function() {
+				switchAppMenu();
+			}, false);
+			
+			function switchAppMenu(){
+				var divZIndex = 1000; // 기본 z-index
+				var isDraggable = false; //  드래그 가능한지 체크하는 변수
+				var validTarget, validTargetLeft, validTargetTop, startX, startY, startPositionX, startPositionY, currentOrder, newOrder, leftPosition, topPosition;
+				var eAppMenu = document.getElementById('appMenu');
+				
+				eAppMenu.addEventListener("mousedown", downMouse, false); // 마우스 다운 이벤트 (무브는 다운 안에)
+				document.addEventListener("mouseup", upMouse, false); // 마우스 업 이벤트
+
+
+				function downMouse(e){
+					var currentTarget;
+
+					if (typeof e.target != "undefined") { // 타겟이 있으면 e.target을 currentTarget으로
+						currentTarget = e.target;
+					}
+					
+					if (currentTarget.className != "draggableDiv"){ // 자식노드가 잡혔으면 부모 노드를 currentTarget으로
+						currentTarget = currentTarget.parentNode;
+					}
+
+					if (currentTarget.className == "draggableDiv"){ //currentTarget이 draggableDiv이면 
+						isDraggable = true; // 드래그 체크 변수 참
+						startX = e.clientX; // 시작 지점 저장
+						startY = e.clientY;
+						startPositionX = e.layerX; // 레이어 중 어느 위치 잡았는지
+						startPositionY = e.layerY;
+						
+						validTarget = currentTarget;
+						validTargetLeft = parseInt(currentTarget.style.left+0); //드래깅 전 left, top
+						validTargetTop = parseInt(currentTarget.style.top+0);
+						validTarget.style.zIndex = divZIndex++; // 드래깅 대상의 z-index 높임
+						validTarget.style.backgroundColor = "#ccc"; //드래깅 대상 배경색 지정
+						
+						currentOrder = checkOrder(validTargetLeft, validTargetTop);					
+						document.onmousemove = moveMouse;  //move 마우스 이벤트 걺
+					 }
+				}
+
+				function upMouse(){
+					isDraggable = false; // 드래그 체크 변수 거짓
+					document.onmousemove = null; // move 마우스 이벤트 끔
+					setItemLocation();
+				}
+				
+				function moveMouse(e){
+					if (isDraggable){
+						leftPosition = validTargetLeft + e.clientX - startX;
+						topPosition = validTargetTop + e.clientY - startY;
+
+						// 밖으로 못도망가게 해야함 ㅠㅠ
+						validTarget.style.left = leftPosition + "px";
+						validTarget.style.top  = topPosition + "px";
+
+						return false;
+					}
+				}
+				
+				function setItemLocation() { // 정위치에 놓음
+					validTarget.style.backgroundColor = "#fff";
+					newOrder = checkOrder(leftPosition, topPosition);
+					console.log(leftPosition, topPosition, newOrder);
+					validTarget.style.left = assignLeft(newOrder);
+					validTarget.style.top = assignTop(newOrder);
+					sortItem();
+				}
+				
+				function sortItem() { // 소팅함
+					var changedOrder = newOrder - currentOrder;
+					var movingItems = document.querySelectorAll('.draggableDiv');
+					if (changedOrder > 0) {
+						var i;
+						for( i = 0;  i  < changedOrder; i++) {
+							movingItems[newOrder - i].style.left = assignLeft(newOrder - i  - 1);											  
+							movingItems[newOrder - i].style.top = assignTop(newOrder - i  - 1);							
+						}
+					}
+					if (changedOrder < 0) {
+						var i;
+						for( i = 0;  i  < Math.abs(changedOrder); i++) {
+							movingItems[newOrder + i].style.left = assignLeft(newOrder + i + 1);											  
+							movingItems[newOrder + i].style.top = assignTop(newOrder + i  + 1);							
+						}
+					}
+				}
+				
+				function checkOrder(x, y) { // 위치를 순서값으로 변환
+					var order = Math.floor(x/80) + (Math.floor(y/80))*3;
+					return order;
+				}
+				
+				function assignLeft(x) { // 요소의 left값 계산
+					x = (Math.floor(x%3)*80)+"px";
+					return x;
+				}
+
+				function assignTop(y) {
+					y = (Math.floor(y/3)*80)+"px";
+					return y;
+				}
+			}
+			
+			/*
+function switchAppMenu() {
+
+	var items = document.querySelectorAll('.appMenuItem');
+	var dragDiv = null;
+
+	this.handleDragStart = function (e) {
+		e.dataTransfer.effectAllowed = 'move';
+		e.dataTransfer.setData('text/html', this.innerHTML);
+		dragDiv = this;
+
+		this.style.opacity = '0.5';
+		this.className += ' moving';
+	};
+
+	this.handleDragOver = function (e) { // drop 기능을 위해 디폴트 비활성화
+		if (e.preventDefault) {
+			e.preventDefault();
+		}
+
+		e.dataTransfer.dropEffect = 'move';
+
+		return false;
+	};
+
+	this.handleDragEnter = function (e) { // 드래그 중인 div
+		this.className += ' over';
+	};
+
+	this.handleDragLeave = function (e) {
+		this.className = this.className.replace( /(?:^|\s)over(?!\S)/ , '' ); // 클래스 이름 over 제거
+	};
+
+	this.handleDrop = function (e) { // 현재 div (바뀔 위치)
+		if (dragDiv != this) { // 자기 자신 아닐 때만 바꾸기
+			dragDiv.innerHTML = this.innerHTML;
+			this.innerHTML = e.dataTransfer.getData('text/html');
+		}
+
+		return false;
+	};
+
+	this.handleDragEnd = function (e) { // 드래그 중인 div
+		this.style.opacity = '1';
+
+		[ ].forEach.call(items, function (item) {
+			item.className = item.className.replace( /(?:^|\s)over(?!\S)/ , '' );
+			item.className += ' moving';
+		});
+	};
+	
+	[ ].forEach.call(items, function (item) {
+		item.setAttribute('draggable', 'true');  // 드래그 가능하게 변경
+		item.addEventListener('dragstart', this.handleDragStart, false);
+		item.addEventListener('dragenter', this.handleDragEnter, false);
+		item.addEventListener('dragover', this.handleDragOver, false);
+		item.addEventListener('dragleave', this.handleDragLeave, false);
+		item.addEventListener('drop', this.handleDrop, false);
+		item.addEventListener('dragend', this.handleDragEnd, false);
+	});
+}*/
+			
+			
+
+/*
+function switchAppMenu() { // 앱 드롭다운 메뉴의 항목 위치를 드래그 앤 드롭으로 바꿈 (망함)
+	var startX, startY, endX, endY, startPositionX, startPorsitonY, movedX, movedY, targetX, targetY, currentOrder, movedOrder, eTargetDiv;
+    var eAppMenu = document.getElementById('appMenu');
+    var eAppMenuItem = eAppMenu.getElementsByClassName('appMenuItem');
+    eAppMenu.addEventListener("mousedown", downMouse, false);
+    window.addEventListener("mouseup", upMouse, false);
+                              
+    function downMouse(e) {
+        startX = e.clientX;
+        startY = e.clientY;
+		startPositionX = e.layerX;
+		startPorsitonY = e.layerY;
+		
+		if (e.target.parentNode.className === 'appMenuItem') {
+			targetX = e.target.parentNode.style.left;
+			targetX = targetX.substring(0, targetX.length - 2) * 1;
+			targetY = e.target.parentNode.style.top;
+			targetY = targetY.substring(0, targetY.length - 2) * 1;
+		}
+		if (e.target.parentNode.parentNode.className === 'appMenuItem') {
+			targetX = e.target.parentNode.parentNode.style.left;
+			targetX = targetX.substring(0, targetX.length - 2) * 1;
+			targetY = e.target.parentNode.parentNode.style.top;
+			targetY = targetY.substring(0, targetY.length - 2) * 1;
+		}
+		currentOrder = checkOrder(targetX, targetY);
+		console.log(targetY, currentOrder);
+		if (e.target.parentNode.className === 'appMenuItem') {
+			setDiv(e.target.parentNode);
+        }
+			
+		if (e.target.parentNode.parentNode.className === 'appMenuItem') {
+			setDiv(e.target.parentNode.parentNode);
+		}
+			
+		function setDiv(element) { // 마우스다운 타겟
+			element.style.zIndex = "2000";
+			element.style.backgroundColor = "#eee";
+			window.addEventListener("mousemove", moveMouse, true);
+		}
+    }
+
+    function moveMouse(e) {
+        endX = e.clientX;
+        endY = e.clientY;
+        movedX = endX - startX;
+        movedY = endY - startY;
+
+        if(movedX > 10 || movedY > 10) {
+			if (e.target.parentNode.className === 'appMenuItem') {
+				moveDiv(e.target.parentNode);
+			}
+			if (e.target.parentNode.parentNode.className === 'appMenuItem') {
+				moveDiv(e.target.parentNode.parentNode);
+			}
+        }
+		
+		function moveDiv(element) {
+			targetX = element.style.left;
+			targetX = targetX.substring(0, targetX.length - 2) * 1;
+			element.style.left = (targetX + movedX) + "px";
+			targetY = element.style.top;
+			targetY = targetY.substring(0, targetY.length - 2) * 1;
+			element.style.top = (targetY + movedY) + "px";
+			element.style.left = "30px";
+			console.log(element);
+		}
+    }
+    
+    function upMouse(e) {
+        endX = e.clientX;
+        endY = e.clientY;
+        movedX = endX - startX;
+        movedY = endY - startY;
+        if (e.target.className === 'appMenuItem') {
+            setItemLocation(e.target);
+        }
+
+        if (e.target.parentNode.className === 'appMenuItem') {
+            setItemLocation(e.target.parentNode);
+        }
+    }
+    
+    function setItemLocation(element) {
+        element.style.zIndex = "1000";
+        element.style.backgroundColor = "#fff";
+        eAppMenu.removeEventListener("mousemove", moveMouse, true);
+        if ((Math.abs(movedX) === 0) && (Math.abs(movedY) === 0)) {
+            element.style.left = assignLeft(currentOrder);
+            element.style.top = assignTop(currentOrder);
+            return;
+        }
+        movedOrder = checkOrder(movedX+startPositionX, movedY+startPorsitonY); // 마우스다운 시점의 시작 위치를 움직인 거리에 더함
+        element.style.left = assignLeft(currentOrder + movedOrder);
+        element.style.top = assignLeft(currentOrder + movedOrder);
+    }
+    
+    function checkOrder(x, y) { // 위치를 순서값으로 변환
+        var order = Math.floor(x/80) + (Math.floor(y/80))*3;
+        return order;
+    }
+    
+    function assignLeft(x) { // 요소의 left값 계산계산
+        x = (Math.floor(x%3)*80)+"px";
+        return x;
+    }
+    
+    function assignTop(x) {
+        x = (Math.floor(x/3)*80)+"px";
+        return x;
+    }
+}*/
+			
+/*
+function ancestor(node, match){
+	if(!node){
+		return null;
+	}
+	if(!node.nodeType || typeof(match) != 'string'){ // 끝까지 찾았으면
+		return node;
+	}
+	if((match = match.split('.')).length === 1){
+		match.push(null);
+	}
+	if(!match[0]){
+		match[0] = null;
+	}
+	do{
+		if((!match[0] || match[0].toLowerCase() == node.nodeName.toLowerCase()) && (!match[1] || new RegExp('( |^)(' + match[1] + ')( |$)').test(node.className))){
+			break;
+		}
+	}
+	while(node = node.parentNode);
+
+	return node;
+}*/
+		</script>
+	</body>
+</html>
